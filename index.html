@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Zion National Park</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta charset="utf-8">
+    <!-- css -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="css/leaflet-sidebar.css" />
+    <link rel="stylesheet" href="css/leaflet.zoomhome.css"/>
+    <link rel="stylesheet" href="css/main.css">
+    
+  </head>
+  <body>
+      <div id="sidebar" class="sidebar collapsed">
+          <!-- Nav tabs -->
+          <div class="sidebar-tabs">
+              <ul role="tablist">
+                  <li><a href="#layerSelect" role="tab"><i class="fas fa-tree"></i></a></li>
+                  <li><a href="#addview" role="tab"><i class="fas fa-binoculars"></i></i></a></li>
+                  <li><a href="#queryTrails" role="tab"><i class="fas fa-hiking"></i></a></li>
+              </ul>
+  
+              
+          </div>
+  
+          <!-- Tab panes -->
+          <div class="sidebar-content">
+              <div class="sidebar-pane" id="layerSelect">
+                  <h1 class="sidebar-header">Zion National Park<span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
+                  </h1>
+                  <p class="text">Check out the great trails and fantastic viewpoints in the park.</p>
+                  <h3>Select Layers</h3>
+                  <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="0" name="layer"checked>
+                      <label for="0">Park Boundary</label>
+                  </div>
+                  <div class="form-check">
+                      <input type="checkbox"  class="form-check-input"id="1" name="layer"checked>
+                      <label for="1">Trails</label>
+                  </div>
+                  <div class="form-check">
+                      <input type="checkbox"  class="form-check-input"id="2" name="layer"checked>
+                      <label for="2">Trailheads</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox"  class="form-check-input" id="3" name="layer"checked>
+                    <label for="3">Good Viewpoints</label>
+                  </div>
+                  <h3>Select a Basemap</h3>
+                  
+                      <div class="form-check">
+                          <input type="radio" class="form-check-input" name="basemap" id="main" checked/>
+                          <label class="form-check-label" for="main" >Main</label>
+                      </div>
+                      <div class="form-check">
+                          <input type="radio" class="form-check-input" name="basemap" id="other">
+                          <label for="other" class="form-check-label">Stylized</label>
+                      </div>  
+              </div>
+  
+              <div class="sidebar-pane" id="addview">
+                  <h1 class="sidebar-header">Add a Viewpoint<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                  <p class="text">Find a nice place to view the park? Share it with the world!</p>
+                
+                  <div class="form-group">
+                    <label class="addLabel" for="name">Your Name</label> 
+                    <input type="text" class="form-control addInput" id="name">
+                  </div>
+                  <div class="form-group"> 
+                    <label class="addLabel" for="viewPoint">View Name</label>
+                    <input type="text" class="form-control addInput"  id="viewpoint">
+                  </div> 
+                  <div class="form-group">   
+                      <label class="addLabel" for="description">Description</label>
+                      <textarea class="form-control addInput" id="description" cols="30"rows="3"></textarea>
+                  </div>
+                  <div class="form-group"> 
+                    <label class="addLabel" for="lat">Latitude</label>
+                    <input type="text" class="form-control addInput"  id="lat">
+                  </div> 
+                  <div class="form-group">  
+                    <label class="addLabel" for="lon">Longitude</label>
+                    <input type="text" class="form-control addInput"  id="lon">
+                  </div>  
+                    <button id="coords" type="button" class="btn btn-primary">Choose Location</button>
+                    <button id="setView" type="button" class="btn btn-light">Submit</button>
+              </div>
+             
+              <div class="sidebar-pane" id="queryTrails">
+                  <h1 class="sidebar-header">Find a Trail<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                  <div id="controls">
+                    <p>Find the right trail for you, your family and your friends.</p>
+                    <div id="info">
+                      <h3>Horses Allowed on Trail</h3>
+                    </div>
+        
+                    
+                        <div class="form-check">
+                        <input type="radio" name="TrailType" id="Allowed" class="horses" value="Allowed"checked >
+                        <label for="Allowed">Yes</label>
+                        </div>
+                        <div class="form-check">
+                        <input type="radio" name="TrailType" id="None" class="horses" value="None">
+                        <label for="None">No</label>
+                        </div>
+                    
+        
+                    <div id="info">
+                      <h3>Trail Length</h3>
+                    </div>
+                    <p>
+                        <label for="amount">Selected Mile Range:</label>
+                        <input type="text" id="amount" readonly style="border:0; color:rgba(75,94,38,.9); font-weight:bold;">
+                    </p>
+                    <div id="slider-range"></div>
+                  </div>
+                  <div class="form-group">
+                  <h3>Or Look Up a Specific Trailhead</h3>
+                  <select id="select" style="display:block" class="custom-select addInput" size="4"></select>
+                </div>
+                  <div class="form-group">
+                  <button id="findTrail">Search</button>
+                  <button id="showAll"> Show All Trails</button>
+                  </div>
+                </div>
+              </div>
+          
+  
+              
+          </div>
+      </div>
+    
+      <div id="map" class="sidebar-map"></div>
+
+   
+  <!-- <script type="text/javascript" src="js/jquery-3.3.1.js"></script> -->
+  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+  <script src="https://cartodb-libs.global.ssl.fastly.net/carto.js/v4.1.11/carto.js"></script>
+  <script src="js/leaflet-sidebar.js"></script>
+  <script src="js/leaflet.zoomhome.min.js"></script>
+  <script src="js/main.js"></script>
+  </body>
+</html>
