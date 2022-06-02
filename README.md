@@ -19,6 +19,6 @@ You can view the app at https://agilvarry.github.io/Zion-National-Park-Trails/, 
 
 -OR-
 
-You can click this GIF to go to a video of me demonstrating the app for my classmates:
+[You can watch a video of me demonstrating the app for my classmates, as depicted in this gif:](https://www.youtube.com/watch?v=pbKZuRzm1hE)
 
-[![SC2 Video](img/Geog777_Project_2_Demonstration.gif)](https://www.youtube.com/watch?v=pbKZuRzm1hE)
+[![SC2 Video](img/Geog777_Project_2_Demonstration.gif)]
