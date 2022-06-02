@@ -12,7 +12,6 @@ I created it for a capstone course while attending grad school at the University
 * [jQuery](https://jquery.com/) - jQuery
 * [Carto.js](https://carto.com/developers/carto-js/v3/) - library that interacts with different CARTO APIs, which this app uses as a backend
 
-https://www.youtube.com/watch?v=pbKZuRzm1hE
 
 ## View
 
