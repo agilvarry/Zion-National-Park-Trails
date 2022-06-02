@@ -17,3 +17,8 @@ I created it for a capstone course while attending grad school at the University
 
 You can view the app at https://agilvarry.github.io/Zion-National-Park-Trails/, though the backend is no longer functional.
 
+-OR-
+
+You can click this GIF to go to a video of me demonstrating the app for my classmates:
+
+[![SC2 Video](img/Geog777_Project_2_Demonstration.gif)](https://www.youtube.com/watch?v=pbKZuRzm1hE)
